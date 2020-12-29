@@ -80,6 +80,27 @@ workcomponent(iliadlines)
 # ╔═╡ 77324fd2-4a16-11eb-1b70-114bfa5ad980
 passagecomponent(iliadlines)
 
+# ╔═╡ cea3c344-4a17-11eb-04e3-81a82217e022
+workdepth(iliadlines)
+
+# ╔═╡ df0e0a28-4a17-11eb-2875-a560b11d11a9
+passagedepth(iliadlines)
+
+# ╔═╡ 230f2f54-4a18-11eb-237d-5958bcdd7e31
+droppassage(iliadlines)
+
+# ╔═╡ 29d2f398-4a18-11eb-332b-99a40cb2a155
+dropversion(iliadlines)
+
+# ╔═╡ 2fa4ba04-4a18-11eb-1985-7166b7840d5f
+dropexemplar(iliadlines)
+
+# ╔═╡ 3ba57c8a-4a18-11eb-3554-3d17012833cb
+addexemplar(iliadlines,"tokens")
+
+# ╔═╡ 47592478-4a18-11eb-10b8-731c35f95cc2
+addversion(iliadlines,"version2")
+
 # ╔═╡ 80183c10-4a16-11eb-2c56-99c34b1c907c
 isrange(iliadlines)
 
@@ -94,6 +115,45 @@ hassubref(iliadlines)
 
 # ╔═╡ c8971998-4a16-11eb-27d5-0121fe54cdb0
 #trimmed = dropsubref(iliadlines)
+
+# ╔═╡ 717a5622-4a17-11eb-1522-4782b397a71c
+collapsePassageTo(iliadlines,1)
+
+# ╔═╡ 8a52bbc8-4a17-11eb-2e45-6ba00ba7b34f
+collapsePassageBy(iliadlines,1)
+
+# ╔═╡ 5a36f020-4a18-11eb-1238-4fbd740184d0
+md"## Comparing pairs of URNs
+
+"
+
+# ╔═╡ 63d1dcb2-4a18-11eb-3d9b-69775eadf766
+begin
+	urn1 = CtsUrn("urn:cts:greekLit:tlg0012.tlg001.msA:1.1")
+	urn2 = CtsUrn("urn:cts:greekLit:tlg0012.tlg001:1.1")
+	urn3 =  CtsUrn("urn:cts:greekLit:tlg0012.tlg001:1")
+end
+
+# ╔═╡ 8ba6360c-4a18-11eb-19e0-a1199a3ee4c1
+workContains(urn2,urn1)
+
+# ╔═╡ 921c2c26-4a18-11eb-33af-1f5ba380403a
+workContains(urn1,urn2)
+
+# ╔═╡ 9c902826-4a18-11eb-22f9-f78dcf7a37fe
+passageContains(urn3, urn1)
+
+# ╔═╡ a11dbece-4a18-11eb-0b89-0365764317d6
+passageContains(urn1, urn3)
+
+# ╔═╡ b5836ba2-4a18-11eb-0aff-1b695c6007be
+urn2 > urn1
+
+# ╔═╡ bf32d1c4-4a18-11eb-3367-3d7181676c5e
+urn1 > urn2
+
+# ╔═╡ c5f1bc32-4a18-11eb-322f-25318630fe49
+urn3 > urn2
 
 # ╔═╡ cfde7644-4a14-11eb-3ffe-6944c0124fa6
 md"## Validating URN syntax
@@ -151,7 +211,7 @@ If the passage component includes a subreference, it must comply with the proper
 
 
 # ╔═╡ Cell order:
-# ╠═ec8b8502-4a03-11eb-3d17-59ea4967eb39
+# ╟─ec8b8502-4a03-11eb-3d17-59ea4967eb39
 # ╠═cddba1fa-4a12-11eb-0083-8b60d520b800
 # ╠═f53ece4a-4a12-11eb-2a0b-d7d17bfbcd67
 # ╟─d4b8ff16-4a13-11eb-363c-0159c3f7e747
@@ -165,11 +225,29 @@ If the passage component includes a subreference, it must comply with the proper
 # ╠═4b844980-4a16-11eb-1ac4-df2f5944d7fe
 # ╠═6f437da0-4a16-11eb-2d0b-e385e772d029
 # ╠═77324fd2-4a16-11eb-1b70-114bfa5ad980
+# ╠═cea3c344-4a17-11eb-04e3-81a82217e022
+# ╠═df0e0a28-4a17-11eb-2875-a560b11d11a9
+# ╠═230f2f54-4a18-11eb-237d-5958bcdd7e31
+# ╠═29d2f398-4a18-11eb-332b-99a40cb2a155
+# ╠═2fa4ba04-4a18-11eb-1985-7166b7840d5f
+# ╠═3ba57c8a-4a18-11eb-3554-3d17012833cb
+# ╠═47592478-4a18-11eb-10b8-731c35f95cc2
 # ╠═80183c10-4a16-11eb-2c56-99c34b1c907c
 # ╠═bd997194-4a16-11eb-18f8-cb7c2d52c629
 # ╠═c355597e-4a16-11eb-3588-2556d8535568
 # ╠═9f78d164-4a16-11eb-3ce8-67318509a164
 # ╠═c8971998-4a16-11eb-27d5-0121fe54cdb0
+# ╠═717a5622-4a17-11eb-1522-4782b397a71c
+# ╠═8a52bbc8-4a17-11eb-2e45-6ba00ba7b34f
+# ╟─5a36f020-4a18-11eb-1238-4fbd740184d0
+# ╠═63d1dcb2-4a18-11eb-3d9b-69775eadf766
+# ╠═8ba6360c-4a18-11eb-19e0-a1199a3ee4c1
+# ╠═921c2c26-4a18-11eb-33af-1f5ba380403a
+# ╠═9c902826-4a18-11eb-22f9-f78dcf7a37fe
+# ╠═a11dbece-4a18-11eb-0b89-0365764317d6
+# ╠═b5836ba2-4a18-11eb-0aff-1b695c6007be
+# ╠═bf32d1c4-4a18-11eb-3367-3d7181676c5e
+# ╠═c5f1bc32-4a18-11eb-322f-25318630fe49
 # ╟─cfde7644-4a14-11eb-3ffe-6944c0124fa6
 # ╠═ef397248-4a14-11eb-3fdd-4da8296cf5ab
 # ╠═00ac1ef2-4a15-11eb-0584-89e8d81222a8
