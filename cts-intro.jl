@@ -28,6 +28,9 @@ using CitableText
 In the meantime, you can use pre-1.0 work in progress by adding the package from its github repository, as illustrated in the next cell.
 """
 
+# ╔═╡ cd712040-4abf-11eb-28a7-eb471fc32ed0
+md"Then use it as normal:"
+
 # ╔═╡ d4b8ff16-4a13-11eb-363c-0159c3f7e747
 md"## `CtsUrn`s in `CitableText` 1.0
 
@@ -213,6 +216,7 @@ If the passage component includes a subreference, it must comply with the proper
 # ╔═╡ Cell order:
 # ╟─ec8b8502-4a03-11eb-3d17-59ea4967eb39
 # ╠═cddba1fa-4a12-11eb-0083-8b60d520b800
+# ╟─cd712040-4abf-11eb-28a7-eb471fc32ed0
 # ╠═f53ece4a-4a12-11eb-2a0b-d7d17bfbcd67
 # ╟─d4b8ff16-4a13-11eb-363c-0159c3f7e747
 # ╟─666545f8-4a14-11eb-2de4-4118a5c51831
@@ -254,7 +258,7 @@ If the passage component includes a subreference, it must comply with the proper
 # ╠═134d1244-4a15-11eb-1692-73d97af3ef91
 # ╠═3966f7c8-4a15-11eb-192a-f1e7700da48f
 # ╠═605b82b6-4a15-11eb-0682-716ae7f2710e
-# ╠═7dade5c0-4a15-11eb-105c-abbbd2df9fc4
+# ╟─7dade5c0-4a15-11eb-105c-abbbd2df9fc4
 # ╠═8cc0dd18-4a15-11eb-214d-5b522be1b829
 # ╠═a86c4310-4a15-11eb-18c7-9df5dbf4f433
 # ╟─b08e1938-4a15-11eb-16e4-753e0ecd1ebb
