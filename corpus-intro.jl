@@ -61,10 +61,56 @@ Slice and dice, filter, whatever you like."
 c.corpus[100:120]
 
 # ╔═╡ 4fa371da-4b60-11eb-237a-0fd324cd1a2f
-argonauts = CtsUrn("urn:cts:latinLit:stoa1263.stoa001.hc:14pr")
+argonautsUrn = CtsUrn("urn:cts:latinLit:stoa1263.stoa001.hc:14pr")
 
 # ╔═╡ 5388caa2-4b60-11eb-0cd3-59a9ca43cf12
-filter(cn -> urncontains(argonauts,cn.urn), c.corpus)
+argonauts = filter(cn -> urncontains(argonautsUrn,cn.urn), c.corpus)
+
+# ╔═╡ 9fe79104-4b78-11eb-0918-0d009561f84a
+md"## Prototyping navigation
+
+"
+
+# ╔═╡ a610fe26-4b78-11eb-2186-517fe436321d
+argotitle = argonauts[1]
+
+# ╔═╡ cd2e2cf4-4b78-11eb-3f72-3b2990aa36b9
+function nextnode(n::CitableNode,c::CitableCorpus)
+	idx = findfirst(isequal(n),c.corpus)
+	if idx == size(c.corpus)
+		nothing
+	else 
+		c.corpus[idx + 1]
+	end
+end
+
+# ╔═╡ 2f687dde-4b79-11eb-1283-c7423b1ff2b4
+function prevnode(n::CitableNode,c::CitableCorpus)
+	idx = findfirst(isequal(n),c.corpus)
+	if idx == 1
+		nothing
+	else 
+		c.corpus[idx - 1]
+	end
+end
+
+# ╔═╡ 03e2810c-4b79-11eb-03d1-21a83006ab04
+nextnode(argotitle,c)
+
+# ╔═╡ 3f1f5c16-4b79-11eb-1d3b-eb7c99f3d0b3
+prevnode(argotitle,c)
+
+# ╔═╡ 4b39d6de-4b79-11eb-381e-b95904a1e018
+argocorp = CitableCorpus(argonauts)
+
+# ╔═╡ 54e53ade-4b79-11eb-1875-13d9dc979a2c
+prevnode(argotitle, argocorp)
+
+# ╔═╡ 61273e64-4b79-11eb-3b18-6955a930ad65
+lastargo = argonauts[size(argonauts, 1)]
+
+# ╔═╡ 9d76c81c-4b79-11eb-28b5-25ee882b7e5e
+
 
 # ╔═╡ Cell order:
 # ╟─1b8c61f6-4b59-11eb-18fd-8fcdfdddc637
@@ -82,3 +128,13 @@ filter(cn -> urncontains(argonauts,cn.urn), c.corpus)
 # ╠═0f92ccbc-4b60-11eb-2841-2dba4816906f
 # ╠═4fa371da-4b60-11eb-237a-0fd324cd1a2f
 # ╠═5388caa2-4b60-11eb-0cd3-59a9ca43cf12
+# ╠═9fe79104-4b78-11eb-0918-0d009561f84a
+# ╠═a610fe26-4b78-11eb-2186-517fe436321d
+# ╠═cd2e2cf4-4b78-11eb-3f72-3b2990aa36b9
+# ╠═2f687dde-4b79-11eb-1283-c7423b1ff2b4
+# ╠═03e2810c-4b79-11eb-03d1-21a83006ab04
+# ╠═3f1f5c16-4b79-11eb-1d3b-eb7c99f3d0b3
+# ╠═4b39d6de-4b79-11eb-381e-b95904a1e018
+# ╠═54e53ade-4b79-11eb-1875-13d9dc979a2c
+# ╠═61273e64-4b79-11eb-3b18-6955a930ad65
+# ╠═9d76c81c-4b79-11eb-28b5-25ee882b7e5e
