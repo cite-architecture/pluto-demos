@@ -5,9 +5,12 @@ using Markdown
 using InteractiveUtils
 
 # ╔═╡ cddba1fa-4a12-11eb-0083-8b60d520b800
+# Ensure we don't depend on local installation of Julia by adding
+# all packages here.
+
 begin
 	using Pkg
-	Pkg.add(url="https://github.com/cite-architecture/CitableText.jl")
+	Pkg.add("CitableText")
 end
 
 # ╔═╡ f53ece4a-4a12-11eb-2a0b-d7d17bfbcd67
@@ -15,33 +18,22 @@ using CitableText
 
 # ╔═╡ ec8b8502-4a03-11eb-3d17-59ea4967eb39
 md"""
-# Canonically citable texts in Julia:  the `CitableText` module
+# Canonical citation of texts with the Julia `CitableText` module
 
-This notebook illustrates usage of the julia `CitableText` module.
+This notebook illustrates usage of the `CtsUrn` type in Julia's `CitableText` module.
 
-Version 1 is nearly ready for release:  when it is released, it will be submitted to the Julia registry so that you can use it with standard julia syntax without further complication:
-
-```julia
-using CitableText
-```
-
-In the meantime, you can use pre-1.0 work in progress by adding the package from its github repository, as illustrated in the next cell.
 """
 
-# ╔═╡ cd712040-4abf-11eb-28a7-eb471fc32ed0
-md"Then use it as normal:"
-
 # ╔═╡ d4b8ff16-4a13-11eb-363c-0159c3f7e747
-md"## `CtsUrn`s in `CitableText` 1.0
+md"## `CtsUrn`s
 
-The focus of version 1.0 is robust support for CTS URNs.  (See  [http://cite-architecture.org/ctsurn/](http://cite-architecture.org/ctsurn/) for more details and a formal specification of the syntax.)
+The `CtsUrn` defines a syntax and semantics for citing passges of text. (See  [http://cite-architecture.org/ctsurn/](http://cite-architecture.org/ctsurn/) for more details and a formal specification of the syntax.)
 
-This includes
-
+The `CitableText` module's `CtsUrn` type supports:
 
 - constructing and validating the syntax of CTS URNs
 - manipulating the contents of URNs and generating new URNs programmatically
-- comparison of URNs 
+- comparison  using the semantics the CTS URN
 
 "
 
@@ -215,10 +207,9 @@ If the passage component includes a subreference, it must comply with the proper
 
 # ╔═╡ Cell order:
 # ╟─ec8b8502-4a03-11eb-3d17-59ea4967eb39
-# ╠═cddba1fa-4a12-11eb-0083-8b60d520b800
-# ╟─cd712040-4abf-11eb-28a7-eb471fc32ed0
+# ╟─cddba1fa-4a12-11eb-0083-8b60d520b800
 # ╠═f53ece4a-4a12-11eb-2a0b-d7d17bfbcd67
-# ╟─d4b8ff16-4a13-11eb-363c-0159c3f7e747
+# ╠═d4b8ff16-4a13-11eb-363c-0159c3f7e747
 # ╟─666545f8-4a14-11eb-2de4-4118a5c51831
 # ╠═7578892e-4a14-11eb-3b0c-ddd0451b19d9
 # ╠═a40c3312-4a14-11eb-314f-6789b6bc0e3e
