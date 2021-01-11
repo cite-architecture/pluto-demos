@@ -19,18 +19,23 @@ begin
 	Pkg.add("LightGraphs")
 	Pkg.add("GraphPlot")
 	Pkg.add("PlutoUI")
+	Pkg.add("Colors")
+
 	
 	using LightGraphs
 	using GraphPlot
+	using Colors
 	using PlutoUI
 end
 
 # ╔═╡ 5c75a392-5439-11eb-2952-a71dbd0cd250
-md"# Dependency relations of Cite Architcture Julia packages"
+md"""# Dependency relations of some Julia packages
+
+Cite Architecture and HC MID packages
+"""
 
 # ╔═╡ 970f8a8c-543a-11eb-0d5c-47d27c9a8bb3
-md"""
-Click to refresh the graph after editing:  $(@bind redraw Button("Redraw"))
+md""" $(@bind redraw Button("Redraw")) Click to refresh the graph after editing
 """
 
 # ╔═╡ 606bf410-5439-11eb-3796-a3b6bc952d21
@@ -44,7 +49,10 @@ md"Nodes of the graph are package names:"
 pkglist = ["CitableBase", 
 	"CitableObject", 
 	"CitableText",
-	"CitablePhysicalText"
+	"CitablePhysicalText",
+	"CitableImage",
+	"CitableTeiReaders",
+	"EditorsRepo"
 ]
 
 
@@ -55,7 +63,17 @@ md"Edges are pairs of package names:"
 edgelist = [
 	("CitableObject", "CitableBase"),
 	("CitableText", "CitableBase"),
-	("CitablePhysicalText", "CitableText")
+	("CitablePhysicalText", "CitableText"),
+	("CitablePhysicalText", "CitableObject"),
+	("CitablePhysicalText", "CitableImage"),
+	("CitableImage","CitableObject"),
+	("CitableTeiReaders", "CitableText"),
+	
+	("EditorsRepo", "CitableText"),
+	("EditorsRepo", "CitablePhysicalText"),
+	("EditorsRepo", "CitableObject"),
+	("EditorsRepo", "CitableTeiReaders"),
+	("EditorsRepo", "CitableImage")
 ]
 
 # ╔═╡ c159fa7c-5439-11eb-0a53-55b14afc4e5e
@@ -68,12 +86,6 @@ md"Define graph by number of nodes:"
 gr = SimpleDiGraph(length(pkglist) )
 
 
-# ╔═╡ f14377e2-5439-11eb-1ecf-1fe748494042
-begin 
-	redraw
-	gplot(gr, nodelabel=pkglist)
-end
-
 # ╔═╡ c81e0cb0-5439-11eb-0926-4783ab5b2bda
 # Add edges to graph
 begin
@@ -85,10 +97,54 @@ begin
 	md"Added $(length(edgelist)) edges to graph."
 end
 
+# ╔═╡ a92e6d0e-543c-11eb-2b22-917603a96879
+midindex = 1
+
+# ╔═╡ b0621a00-543c-11eb-061d-0f9947b68697
+citeindex = 2
+
+# ╔═╡ 71aca846-543e-11eb-0f6d-85677dded33a
+rootindex = 3
+
+# ╔═╡ cfe80452-543c-11eb-3f4f-7512c731a887
+colorlist = [
+	rootindex,
+	citeindex,
+	citeindex,
+	citeindex,
+	citeindex,
+	midindex,
+	midindex
+	]
+
+# ╔═╡ 5c25ae8e-543c-11eb-1170-3b7d9c99f356
+nodecolors = [colorant"orange", colorant"lightgrey", colorant"blue"]
+
+# ╔═╡ 5709d294-543d-11eb-0003-81b033b48ada
+md"""
+**Color key**
+
+| Source | Color |
+| --- | --- 
+| Root of cite architecture | $(nodecolors[rootindex]) |
+| Cite Architecture | $(nodecolors[citeindex])|
+| MID | $(nodecolors[midindex])|
+"""
+
+# ╔═╡ f2931c30-543c-11eb-08d7-9f603c71d744
+nodefillc = nodecolors[colorlist]
+
+# ╔═╡ f14377e2-5439-11eb-1ecf-1fe748494042
+begin 
+	redraw
+	gplot(gr, nodelabel=pkglist, nodefillc=nodefillc)
+end
+
 # ╔═╡ Cell order:
 # ╟─39cf9c3a-5439-11eb-09f9-d777cd503b95
 # ╟─5c75a392-5439-11eb-2952-a71dbd0cd250
 # ╟─970f8a8c-543a-11eb-0d5c-47d27c9a8bb3
+# ╟─5709d294-543d-11eb-0003-81b033b48ada
 # ╟─f14377e2-5439-11eb-1ecf-1fe748494042
 # ╟─606bf410-5439-11eb-3796-a3b6bc952d21
 # ╟─65ce68de-5439-11eb-30a3-8511f3cedf12
@@ -99,3 +155,9 @@ end
 # ╟─81681130-5439-11eb-199d-bf2f79706a96
 # ╟─9801297c-5439-11eb-153c-ab58c5faa2b6
 # ╠═c81e0cb0-5439-11eb-0926-4783ab5b2bda
+# ╟─f2931c30-543c-11eb-08d7-9f603c71d744
+# ╠═cfe80452-543c-11eb-3f4f-7512c731a887
+# ╟─a92e6d0e-543c-11eb-2b22-917603a96879
+# ╟─b0621a00-543c-11eb-061d-0f9947b68697
+# ╟─71aca846-543e-11eb-0f6d-85677dded33a
+# ╠═5c25ae8e-543c-11eb-1170-3b7d9c99f356
