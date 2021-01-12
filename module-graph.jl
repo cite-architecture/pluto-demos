@@ -52,7 +52,8 @@ pkglist = ["CitableBase",
 	"CitablePhysicalText",
 	"CitableImage",
 	"CitableTeiReaders",
-	"EditorsRepo"
+	"EditorsRepo",
+	"Orthography"
 ]
 
 
@@ -73,7 +74,8 @@ edgelist = [
 	("EditorsRepo", "CitablePhysicalText"),
 	("EditorsRepo", "CitableObject"),
 	("EditorsRepo", "CitableTeiReaders"),
-	("EditorsRepo", "CitableImage")
+	("EditorsRepo", "CitableImage"),
+	("EditorsRepo", "Orthography")
 ]
 
 # ╔═╡ c159fa7c-5439-11eb-0a53-55b14afc4e5e
@@ -113,6 +115,7 @@ colorlist = [
 	citeindex,
 	citeindex,
 	citeindex,
+	midindex,
 	midindex,
 	midindex
 	]
