@@ -63,3 +63,7 @@ nodecolors = [colorant"orange", colorant"lightgrey", colorant"blue"]
 nodefillc = nodecolors[colorlist]
 
 gplot(gr, nodelabel=pkglist, nodefillc=nodefillc)
+
+
+using Cairo, Compose
+draw(PDF("modules.pdf", 16cm, 16cm), gplot(gr,  nodelabel=pkglist, nodefillc=nodefillc))
