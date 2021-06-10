@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.12.18
+# v0.14.7
 
 using Markdown
 using InteractiveUtils
@@ -49,12 +49,17 @@ md"Nodes of the graph are package names:"
 pkglist = ["CitableBase", 
 	"CitableObject", 
 	"CitableText",
+	"CitableCorpus",
 	"CitablePhysicalText",
 	"CitableImage",
 	"CitableTeiReaders",
 	"EditorsRepo",
 	"Orthography",
-	"EditionBuilders"
+	"EditionBuilders",
+	"PolytonicGreek",
+	"AtticGreek",
+	"ManuscriptGreek",
+	"Lycian"
 ]
 
 
@@ -65,20 +70,31 @@ md"Edges are pairs of package names:"
 edgelist = [
 	("CitableObject", "CitableBase"),
 	("CitableText", "CitableBase"),
+	("CitableCorpus", "CitableText"),
 	("CitablePhysicalText", "CitableText"),
 	("CitablePhysicalText", "CitableObject"),
 	("CitablePhysicalText", "CitableImage"),
 	("CitableImage","CitableObject"),
 	("CitableTeiReaders", "CitableText"),
+	("CitableTeiReaders", "CitableCorpus"),
 	
 	("EditorsRepo", "CitableText"),
 	("EditorsRepo", "CitablePhysicalText"),
+	("EditorsRepo", "CitableCorpus"),
 	("EditorsRepo", "CitableObject"),
 	("EditorsRepo", "CitableTeiReaders"),
 	("EditorsRepo", "CitableImage"),
 	("EditorsRepo", "Orthography"),
 	("EditorsRepo", "EditionBuilders"),
-	("EditionBuilders", "CitableText")
+	("EditionBuilders", "CitableText"),
+	("EditionBuilders", "CitableCorpus"),
+	
+	
+	("PolytonicGreek", "Orthography"),
+	("AtticGreek", "Orthography"),
+	("ManuscriptGreek", "Orthography"),
+	("ManuscriptGreek", "PolytonicGreek"),
+	("Lycian", "Orthography")
 ]
 
 # ╔═╡ c159fa7c-5439-11eb-0a53-55b14afc4e5e
@@ -111,6 +127,9 @@ citeindex = 2
 # ╔═╡ 71aca846-543e-11eb-0f6d-85677dded33a
 rootindex = 3
 
+# ╔═╡ e58c38df-0cca-4814-99b7-ae156278d473
+orthoindex = 4
+
 # ╔═╡ cfe80452-543c-11eb-3f4f-7512c731a887
 colorlist = [
 	rootindex,
@@ -118,14 +137,19 @@ colorlist = [
 	citeindex,
 	citeindex,
 	citeindex,
+	citeindex,
 	midindex,
 	midindex,
 	midindex,
-	midindex
+	midindex,
+	orthoindex,
+	orthoindex,
+	orthoindex,
+	orthoindex
 	]
 
 # ╔═╡ 5c25ae8e-543c-11eb-1170-3b7d9c99f356
-nodecolors = [colorant"orange", colorant"lightgrey", colorant"blue"]
+nodecolors = [colorant"green",  colorant"orange",colorant"blue",colorant"lightgrey"]
 
 # ╔═╡ 5709d294-543d-11eb-0003-81b033b48ada
 md"""
@@ -136,6 +160,7 @@ md"""
 | Root of cite architecture | $(nodecolors[rootindex]) |
 | Cite Architecture | $(nodecolors[citeindex])|
 | MID | $(nodecolors[midindex])|
+| Orthographies | $(nodecolors[orthoindex])|
 """
 
 # ╔═╡ f2931c30-543c-11eb-08d7-9f603c71d744
@@ -155,16 +180,17 @@ end
 # ╟─f14377e2-5439-11eb-1ecf-1fe748494042
 # ╟─606bf410-5439-11eb-3796-a3b6bc952d21
 # ╟─65ce68de-5439-11eb-30a3-8511f3cedf12
-# ╠═6d2cfabe-5439-11eb-1160-63da373a5b25
+# ╟─6d2cfabe-5439-11eb-1160-63da373a5b25
 # ╟─745d3218-5439-11eb-0f18-c1085a88de39
-# ╠═78c1a816-5439-11eb-164b-d5878ad7fe8f
+# ╟─78c1a816-5439-11eb-164b-d5878ad7fe8f
 # ╟─c159fa7c-5439-11eb-0a53-55b14afc4e5e
 # ╟─81681130-5439-11eb-199d-bf2f79706a96
 # ╟─9801297c-5439-11eb-153c-ab58c5faa2b6
-# ╠═c81e0cb0-5439-11eb-0926-4783ab5b2bda
-# ╟─f2931c30-543c-11eb-08d7-9f603c71d744
-# ╠═cfe80452-543c-11eb-3f4f-7512c731a887
+# ╟─c81e0cb0-5439-11eb-0926-4783ab5b2bda
+# ╠═f2931c30-543c-11eb-08d7-9f603c71d744
+# ╟─cfe80452-543c-11eb-3f4f-7512c731a887
 # ╟─a92e6d0e-543c-11eb-2b22-917603a96879
 # ╟─b0621a00-543c-11eb-061d-0f9947b68697
 # ╟─71aca846-543e-11eb-0f6d-85677dded33a
+# ╟─e58c38df-0cca-4814-99b7-ae156278d473
 # ╠═5c25ae8e-543c-11eb-1170-3b7d9c99f356
