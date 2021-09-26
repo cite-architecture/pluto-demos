@@ -1,22 +1,28 @@
+using LightGraphs
 using TikzGraphs
-
+using TikzPictures
 pkglist = [
+    # CITE
     "CitableBase", 
 	"CitableObject", 
 	"CitableText",
 	"CitableCorpus",
 	"CitablePhysicalText",
 	"CitableImage",
-
+    # MID
 	"CitableTeiReaders",
 	"EditorsRepo",
 	"Orthography",
 	"EditionBuilders",
-
+    # Orthographies
 	"PolytonicGreek",
 	"AtticGreek",
 	"ManuscriptGreek",
-	"Lycian"
+	"Lycian",
+    # Text analysis
+    "CitableParserBuilder",
+    "Kanones",
+    "CitableCorpusAnalysis"
 ]
 
 edgelist = [
@@ -46,7 +52,28 @@ edgelist = [
 	("AtticGreek", "Orthography"),
 	("ManuscriptGreek", "Orthography"),
 	("ManuscriptGreek", "PolytonicGreek"),
-	("Lycian", "Orthography")
+	("Lycian", "Orthography"),
+
+    ("CitableParserBuilder", "CitableBase"),
+    ("CitableParserBuilder", "CitableText"),
+    ("CitableParserBuilder", "CitableCorpus"),
+    ("CitableParserBuilder", "CitableObject"),
+    ("CitableParserBuilder", "Orthography"),
+
+    ("Kanones", "AtticGreek"),
+    ("Kanones", "CitableBase"),
+    ("Kanones", "CitableObject"),
+    ("Kanones", "CitableParserBuilder"),
+    ("Kanones", "Orthography"),
+    ("Kanones", "PolytonicGreek"),
+
+
+    ("CitableCorpusAnalysis", "CitableText"),
+    ("CitableCorpusAnalysis", "CitableCorpus"),
+    ("CitableCorpusAnalysis", "CitableParserBuilder"),
+    ("CitableCorpusAnalysis", "Orthography"),
+
+
 ]
 
 gr = SimpleDiGraph(length(pkglist) )
@@ -56,7 +83,6 @@ for (src, target) in edgelist
 	add_edge!(gr, srcidx, targetidx)
 end
 
-#  node_style="draw, rounded corners, fill=blue!10", node_styles=Dict(1=>"fill=green!10",3=>"fill=yellow!10")
 
 
 colormods = Dict(
@@ -71,6 +97,32 @@ colormods = Dict(
     13=>"fill=orange!10",
     14=>"fill=orange!10",
     # Text analysis modules:
-     
+    15 =>"fill=cyan!10",
+    16 =>"fill=cyan!10",
+    17 =>"fill=cyan!10"
+
 )
-TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!10", node_styles=colormods)
+TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!20", node_styles=colormods)
+
+
+colorkeygr = SimpleGraph(0)
+add_vertices!(colorkeygr, 4)
+colorkeydict = Dict(
+    1 => "fill=blue!20",
+    2 => "fill=green!10",
+    3 => "fill=orange!10",
+    4 => "fill=cyan!10"
+)
+grouplabels = [
+    "CITE architecture",
+    "MID abstractions",
+    "Orthographies",
+    "Text analysis"
+]
+
+tikzplot = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict)
+
+
+tikzkey = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict) 
+
+TikzPictures.save(PDF("test"),tikzkey)
