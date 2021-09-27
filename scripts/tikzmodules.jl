@@ -126,8 +126,8 @@ tikzplot = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded cor
 
 tikzkey = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict) 
 
-TikzPictures.save(PDF("test"),tikzkey)
-TikzPictures.save(SVG("test"),tikzkey)
+TikzPictures.save(PDF("testout/colorkey"),tikzkey)
+TikzPictures.save(SVG("testout/colorkey"),tikzkey)
 
 
-TikzPictures.save(PDF("modules-tikz"),modulesgraph)
+TikzPictures.save(PDF("testout/modules-tikz"),modulesgraph)
