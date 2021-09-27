@@ -5,3 +5,13 @@ Compose = "a81c6b42-2e10-5240-aca2-a61377ecd94b"
 GraphPlot = "a2cc645c-3eea-5389-862e-a155d0052231"
 LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
 TikzGraphs = "b4f28e30-c73f-5eaf-a395-8a9db949a742"
+TikzPictures = "37f6aa50-8035-52d0-81c2-5a1d08754b2d"
+
+[compat]
+Cairo = "1"
+Colors = "0.12"
+Compose = "0.9"
+GraphPlot = "0.4"
+LightGraphs = "1"
+TikzGraphs = "1"
+TikzPictures = "3"
