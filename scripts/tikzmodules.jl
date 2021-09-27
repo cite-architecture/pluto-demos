@@ -102,7 +102,8 @@ colormods = Dict(
     17 =>"fill=cyan!10"
 
 )
-TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!20", node_styles=colormods)
+
+modulesgraph = TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!20", node_styles=colormods)
 
 
 colorkeygr = SimpleGraph(0)
@@ -126,3 +127,7 @@ tikzplot = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded cor
 tikzkey = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict) 
 
 TikzPictures.save(PDF("test"),tikzkey)
+TikzPictures.save(SVG("test"),tikzkey)
+
+
+TikzPictures.save(PDF("modules-tikz"),modulesgraph)
