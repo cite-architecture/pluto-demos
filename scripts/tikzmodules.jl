@@ -13,23 +13,26 @@ pkglist = [
 	"CitablePhysicalText",
 	
     
-    # 8-11: MID
+    # 8-10: MID abstractions
     "Orthography",
 	"CitableTeiReaders",
     "EditionBuilders",
-	"EditorsRepo",
+	
 
 
-    # 12-14: Orthographies
+    # 11-13: Orthographies
 	"PolytonicGreek",
 	"AtticGreek",
 	"ManuscriptOrthography",
 	
-    # 15-18: Text analysis
+    # 14-17: Text analysis
     "CitableParserBuilder",
     "Kanones",
     "CitableCorpusAnalysis",
     "Lycian",
+    # 18-19: Project repositories
+    "EditorsRepo",
+    "HmtArchive"
 ]
 
 colormods = Dict(
@@ -37,18 +40,21 @@ colormods = Dict(
     8=>"fill=green!10",
     9=>"fill=green!10",
     10=>"fill=green!10",
-    11=>"fill=green!10",
+    
     # Orthographies
+    11=>"fill=orange!15",
     12=>"fill=orange!15",
     13=>"fill=orange!15",
-    14=>"fill=orange!15",
+   
     # Text analysis modules:
+    14=>"fill=cyan!10",
     15 =>"fill=cyan!10",
     16 =>"fill=cyan!10",
     17 =>"fill=cyan!10",
-    18 =>"fill=cyan!10",
-    # HMT
-    # XX =>"fill=olive!15",
+    
+    # Project repo management:
+    18 =>"fill=olive!15",
+    19 =>"fill=olive!15",
 )
 
 
@@ -120,7 +126,8 @@ edgelist = [
     ("Lycian", "CitableObject"),
     ("Lycian", "CitableParserBuilder"),
 
-   
+
+    ("HmtArchive", "EditorsRepo"),
 
 ]
 
@@ -153,10 +160,10 @@ colorkeydict = Dict(
 )
 grouplabels = [
     "CITE architecture",
-    "MID abstractions",
+    "Abstractions from HC MID",
     "Orthographies",
     "Text analysis",
-    "Homer Multitext"
+    "Project repository management"
 ]
 
 tikzplot = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict)
