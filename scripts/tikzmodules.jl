@@ -73,7 +73,8 @@ edgelist = [
     ("CitableCorpusAnalysis", "CitableParserBuilder"),
     ("CitableCorpusAnalysis", "Orthography"),
 
-
+    ( "Orthography", "CitableCorpus"),
+    ( "Orthography", "CitableText"),
 ]
 
 gr = SimpleDiGraph(length(pkglist) )
@@ -122,7 +123,7 @@ grouplabels = [
 ]
 
 tikzplot = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict)
-
+TikzPictures.save(PDF("testout/modules-tikz"),modulesgraph)
 
 tikzkey = TikzGraphs.plot(colorkeygr,grouplabels, node_style="draw, rounded corners, fill=blue!20", node_styles=colorkeydict) 
 
@@ -130,4 +131,3 @@ TikzPictures.save(PDF("testout/colorkey"),tikzkey)
 TikzPictures.save(SVG("testout/colorkey"),tikzkey)
 
 
-TikzPictures.save(PDF("testout/modules-tikz"),modulesgraph)
