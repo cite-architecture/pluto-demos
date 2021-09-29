@@ -62,6 +62,8 @@ edgelist = [
 	("CitableObject", "CitableBase"),
 	("CitableText", "CitableBase"),
 
+    ("CiteEXchange", "CitableObject"),
+
 	("CitableCorpus", "CitableText"),
     ("CitableCorpus", "CiteEXchange"),
 
