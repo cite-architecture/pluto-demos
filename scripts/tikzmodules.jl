@@ -2,7 +2,7 @@ using LightGraphs
 using TikzGraphs
 using TikzPictures
 pkglist = [
-    # 1-7: CITE
+    # 1-8: CITE
     "CitableBase", 
     "CiteEXchange",
 	"CitableObject", 
@@ -11,50 +11,53 @@ pkglist = [
 	"CitableText",
 	"CitableCorpus",
 	"CitablePhysicalText",
+
+    "CitableCollection",
 	
     
-    # 8-10: MID abstractions
+    # 9-11: MID abstractions
     "Orthography",
 	"CitableTeiReaders",
     "EditionBuilders",
 	
 
 
-    # 11-13: Orthographies
+    # 12-14: Orthographies
 	"PolytonicGreek",
 	"AtticGreek",
 	"ManuscriptOrthography",
 	
-    # 14-17: Text analysis
+    # 15-18: Text analysis
     "CitableParserBuilder",
     "Kanones",
     "CitableCorpusAnalysis",
     "Lycian",
-    # 18-19: Project repositories
+    # 19-20: Project repositories
     "EditorsRepo",
     "HmtArchive"
 ]
 
 colormods = Dict(
     # MID modules:
-    8=>"fill=green!10",
     9=>"fill=green!10",
     10=>"fill=green!10",
+    11=>"fill=green!10",
     
     # Orthographies
-    11=>"fill=orange!15",
     12=>"fill=orange!15",
     13=>"fill=orange!15",
-   
+    14=>"fill=orange!15",
+
+
     # Text analysis modules:
-    14=>"fill=cyan!10",
     15 =>"fill=cyan!10",
     16 =>"fill=cyan!10",
     17 =>"fill=cyan!10",
-    
+    18 =>"fill=cyan!10",    
+
     # Project repo management:
-    18 =>"fill=olive!15",
     19 =>"fill=olive!15",
+    20 =>"fill=olive!15",
 )
 
 
@@ -73,6 +76,11 @@ edgelist = [
     ("CitablePhysicalText", "CiteEXchange"),
 
 	("CitableImage","CitableObject"),
+
+    ("CitableCollection", "CitableBase"),
+    ("CitableCollection", "CitableObject"),
+    ("CitableCollection", "CiteEXchange"),
+
 
 	("CitableTeiReaders", "CitableText"),
 	("CitableTeiReaders", "CitableCorpus"),
