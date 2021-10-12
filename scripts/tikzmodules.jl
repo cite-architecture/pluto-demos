@@ -27,12 +27,14 @@ pkglist = [
 	"AtticGreek",
 	"ManuscriptOrthography",
 	
-    # 15-18: Text analysis
+    # 15-19: Text analysis
     "CitableParserBuilder",
     "Kanones",
     "CitableCorpusAnalysis",
     "Lycian",
-    # 19-20: Project repositories
+    "Tabulae",
+
+    # 20-21: Project repositories
     "EditorsRepo",
     "HmtArchive"
 ]
@@ -53,11 +55,12 @@ colormods = Dict(
     15 =>"fill=cyan!10",
     16 =>"fill=cyan!10",
     17 =>"fill=cyan!10",
-    18 =>"fill=cyan!10",    
+    18 =>"fill=cyan!10",   
+    19 =>"fill=cyan!10",    
 
     # Project repo management:
-    19 =>"fill=olive!15",
     20 =>"fill=olive!15",
+    21 =>"fill=olive!15",
 )
 
 
@@ -124,6 +127,10 @@ edgelist = [
     ("Kanones", "Orthography"),
     ("Kanones", "PolytonicGreek"),
 
+
+    ("Tabulae", "CitableParserBuilder"),
+    ("Tabulae", "CitableObject"),
+
     ("CitableCorpusAnalysis", "CitableText"),
     ("CitableCorpusAnalysis", "CitableCorpus"),
     ("CitableCorpusAnalysis", "CitableParserBuilder"),
@@ -156,6 +163,7 @@ end
 
 modulesgraph = TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!20", node_styles=colormods)
 TikzPictures.save(PDF("testout/modules-tikz"),modulesgraph)
+
 
 
 
