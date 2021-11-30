@@ -2,8 +2,11 @@ using LightGraphs
 using TikzGraphs
 using TikzPictures
 pkglist = [
-    # 1-8: CITE
+    # 1-2: abstractions
     "CitableBase", 
+    "CitableLibrary",
+
+    # 3-9: CITE
     "CiteEXchange",
 	"CitableObject", 
     "CitableImage",
@@ -14,57 +17,66 @@ pkglist = [
 
     "CitableCollection",
 	
-    
-    # 9-11: MID abstractions
+    # 10-12: MID abstractions
     "Orthography",
 	"CitableTeiReaders",
     "EditionBuilders",
 	
 
 
-    # 12-14: Orthographies
+    # 13-15: Orthographies
 	"PolytonicGreek",
 	"AtticGreek",
 	"ManuscriptOrthography",
 	
-    # 15-19: Text analysis
+    # 16-20: Text analysis
     "CitableParserBuilder",
     "Kanones",
     "CitableCorpusAnalysis",
     "Lycian",
     "Tabulae",
 
-    # 20-21: Project repositories
+    # 21-22: Project repositories
     "EditorsRepo",
     "HmtArchive"
+
+   
 ]
 
 colormods = Dict(
+    # Abstractions:
+    1=>"fill=yellow",
+    2=>"fill=yellow",
+
     # MID modules:
-    9=>"fill=green!10",
     10=>"fill=green!10",
     11=>"fill=green!10",
-    
+    12=>"fill=green!10",
+
     # Orthographies
-    12=>"fill=orange!15",
+    
     13=>"fill=orange!15",
     14=>"fill=orange!15",
-
+    15=>"fill=orange!15",
 
     # Text analysis modules:
-    15 =>"fill=cyan!10",
+    
     16 =>"fill=cyan!10",
     17 =>"fill=cyan!10",
     18 =>"fill=cyan!10",   
     19 =>"fill=cyan!10",    
+    20 =>"fill=cyan!10",
 
     # Project repo management:
-    20 =>"fill=olive!15",
     21 =>"fill=olive!15",
+    22 =>"fill=olive!15",
 )
 
 
 edgelist = [
+    ("CitableLibrary", "CitableBase"),
+    ("CitableLibrary", "CitableObject"),
+
 	("CitableObject", "CitableBase"),
 	("CitableText", "CitableBase"),
 
@@ -158,26 +170,22 @@ for (src, target) in edgelist
 end
 
 
-
-
-
 modulesgraph = TikzGraphs.plot(gr, pkglist, node_style="draw, rounded corners, fill=blue!20", node_styles=colormods)
 TikzPictures.save(PDF("testout/modules-tikz"),modulesgraph)
-
-
-
 
 colorkeygr = SimpleGraph(0)
 add_vertices!(colorkeygr, 5)
 colorkeydict = Dict(
-    1 => "fill=blue!20",
-    2 => "fill=green!10",
-    3 => "fill=orange!15",
-    4 => "fill=cyan!10",
-    5 => "fill=olive!15"
+    1 => "fill=yellow",
+    2 => "fill=blue!20",
+    3 => "fill=green!10",
+    4 => "fill=orange!15",
+    5 => "fill=cyan!10",
+    6 => "fill=olive!15"
 )
 grouplabels = [
-    "CITE architecture",
+    "CITE concepts",
+    "CITE implementations",
     "Abstractions from HC MID",
     "Orthographies",
     "Text analysis",
