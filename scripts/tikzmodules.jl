@@ -23,7 +23,6 @@ pkglist = [
     "EditionBuilders",
 	
 
-
     # 13-15: Orthographies
 	"PolytonicGreek",
 	"AtticGreek",
@@ -75,7 +74,7 @@ colormods = Dict(
 
 edgelist = [
     ("CitableLibrary", "CitableBase"),
-    ("CitableLibrary", "CitableObject"),
+
 
 	("CitableObject", "CitableBase"),
 	("CitableText", "CitableBase"),
